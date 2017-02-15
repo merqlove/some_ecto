@@ -1,6 +1,6 @@
 # SomeEcto
 
-Example of Ecto error on preloading embed associations:
+Example of Ecto error on preloading belongs_to associations for embedded schemas:
 
 ```
   1) test changeset with valid attributes (SomeEctoTest)
