@@ -22,8 +22,11 @@ defmodule SomeEctoTest do
     {:ok, person_loaded} = Repo.insert(changeset)
 
     new_person = Repo.get_by(Person, %{id: person_loaded.id})
-    assert Repo.preload(new_person, :person_party) # OK
+    new_person = assert Repo.preload(new_person, :person_party) # OK
+    assert new_person.person_party.name == @party.name
     pts = new_person.pattersons |> List.first
+    pts = assert Repo.preload(pts, :party, prefix: nil) # OK
+    assert pts.party.name == @party.name
     assert Repo.preload(pts, :party) # Fail
   end
 
