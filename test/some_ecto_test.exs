@@ -14,7 +14,7 @@ defmodule SomeEctoTest do
   @party Repo.insert(Party.changeset(%Party{}, @party_valid_attrs)) |> elem(1)
   @invalid_attrs %{}
 
-  test "changeset with valid attributes" do
+  test "preload for embed changeset with valid attributes" do
     patterson = Patterson.changeset(%Patterson{}, @patterson_valid_attrs) |> change(%{party_id: @party.id})
     changeset = Person.changeset(%Person{}, %{@valid_attrs | pattersons: [patterson]})
     assert changeset.valid?

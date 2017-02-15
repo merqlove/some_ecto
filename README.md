@@ -3,7 +3,7 @@
 Example of Ecto error on preloading belongs_to associations for embedded schemas:
 
 ```
-  1) test changeset with valid attributes (SomeEctoTest)
+  1) test preload for embed changeset with valid attributes (SomeEctoTest)
      test/some_ecto_test.exs:17
      ** (MatchError) no match of right hand side value: %SomeEcto.Patterson{age: nil, first_name: "some content", id: "a337aa63-b9ef-4e3b-ac8d-c5166767259f", last_name: "some content", party: #Ecto.A
 ssociation.NotLoaded<association :party is not loaded>, party_id: 33}
