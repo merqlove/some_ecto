@@ -3,7 +3,7 @@ defmodule SomeEcto.Repo.Migrations.AddBtForPeople do
 
   def change do
     alter table(:people) do
-      add :party_id, :integer
+      add :person_party_id, :integer
     end
   end
 end
