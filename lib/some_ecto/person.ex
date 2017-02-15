@@ -6,6 +6,8 @@ defmodule SomeEcto.Person do
     field :last_name, :string
     field :age, :integer
 
+    belongs_to :party, SomeEcto.Party
+
     embeds_many :pattersons, SomeEcto.Patterson, on_replace: :delete
   end
 
@@ -14,5 +16,6 @@ defmodule SomeEcto.Person do
     |> Ecto.Changeset.cast(params, ~w(first_name last_name age))
     |> Ecto.Changeset.validate_required([:first_name, :last_name])
     |> Ecto.Changeset.put_embed(:pattersons, params[:pattersons])
+    |> Ecto.Changeset.put_assoc(:party, params[:party])
   end
 end

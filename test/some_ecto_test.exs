@@ -8,7 +8,7 @@ defmodule SomeEctoTest do
 
   alias HelloPhoenix.User
 
-  @valid_attrs %{first_name: "some content", last_name: "some content", pattersons: []}
+  @valid_attrs %{first_name: "some content", last_name: "some content", pattersons: [], party_id: nil}
   @patterson_valid_attrs %{first_name: "some content", last_name: "some content", party_id: nil}
   @party_valid_attrs %{name: "some content"}
   @party Repo.insert(Party.changeset(%Party{}, @party_valid_attrs)) |> elem(1)
@@ -16,14 +16,15 @@ defmodule SomeEctoTest do
 
   test "preload for embed changeset with valid attributes" do
     patterson = Patterson.changeset(%Patterson{}, @patterson_valid_attrs) |> change(%{party_id: @party.id})
-    changeset = Person.changeset(%Person{}, %{@valid_attrs | pattersons: [patterson]})
+    changeset = Person.changeset(%Person{}, %{@valid_attrs | pattersons: [patterson], party_id: @party.id})
     assert changeset.valid?
 
     {:ok, person_loaded} = Repo.insert(changeset)
 
     new_person = Repo.get_by(Person, %{id: person_loaded.id})
+    assert Repo.preload(new_person, :party) # OK
     pts = new_person.pattersons |> List.first
-    assert Repo.preload(pts, :party)
+    assert Repo.preload(pts, :party) # Fail
   end
 
   test "changeset with invalid attributes" do
