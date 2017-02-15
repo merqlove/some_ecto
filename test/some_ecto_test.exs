@@ -15,8 +15,7 @@ defmodule SomeEctoTest do
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do
-    patterson = Patterson.changeset(%Patterson{}, @patterson_valid_attrs)
-    patterson = patterson |> change(%{party_id: @party.id})
+    patterson = Patterson.changeset(%Patterson{}, @patterson_valid_attrs) |> change(%{party_id: @party.id})
     changeset = Person.changeset(%Person{}, %{@valid_attrs | pattersons: [patterson]})
     assert changeset.valid?
 
