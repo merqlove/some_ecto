@@ -6,8 +6,6 @@ defmodule SomeEctoTest do
   alias SomeEcto.{Repo, Person, Patterson, Party}
   doctest SomeEcto
 
-  alias HelloPhoenix.User
-
   @valid_attrs %{first_name: "some content", last_name: "some content", pattersons: [], person_party_id: nil}
   @patterson_valid_attrs %{first_name: "some content", last_name: "some content", party_id: nil}
   @party_valid_attrs %{name: "some content"}
