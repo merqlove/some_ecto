@@ -1,16 +1,25 @@
 # SomeEcto
 
-**TODO: Add description**
+Example of Ecto error on preloading embed associations:
+
+```
+  1) test changeset with valid attributes (SomeEctoTest)
+     test/some_ecto_test.exs:17
+     ** (MatchError) no match of right hand side value: %SomeEcto.Patterson{age: nil, first_name: "some content", id: "a337aa63-b9ef-4e3b-ac8d-c5166767259f", last_name: "some content", party: #Ecto.A
+ssociation.NotLoaded<association :party is not loaded>, party_id: 33}
+     stacktrace:
+       test/some_ecto_test.exs:27: (test)
+```
 
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
 
-  1. Add `someEcto` to your list of dependencies in `mix.exs`:
+  1. Add `some_ecto` to your list of dependencies in `mix.exs`:
 
     ```elixir
     def deps do
-      [{:someEcto, "~> 0.1.0"}]
+      [{:some_ecto, "~> 0.1.0"}]
     end
     ```
 
@@ -18,7 +27,6 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 
     ```elixir
     def application do
-      [applications: [:someEcto]]
+      [applications: [:some_ecto]]
     end
     ```
-
